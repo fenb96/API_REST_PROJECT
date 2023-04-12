@@ -18,18 +18,28 @@ import com.project.apimongodb.service.PersonaService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/")
 @RequiredArgsConstructor
 public class PersonaController {
 	
 	private final PersonaService personaService;
 	
-	@PostMapping("/personas")
+	@GetMapping
+	public String getError() {
+		return "Holis";
+	}
+	
+	@PostMapping("/persona")
 	public void save(@RequestBody Persona persona) {
 		personaService.save(persona);
 	}
 	
-	@GetMapping("/personas")
+//	@GetMapping
+//	public List<Persona> gottem(){
+//		return personaService.findAll();
+//	}
+	
+	@GetMapping("/persona")
 	public List<Persona> findAll(){
 		return personaService.findAll();
 	}
@@ -44,9 +54,11 @@ public class PersonaController {
 		personaService.deleteById(id);
 	}
 	
-	@PutMapping("/personas")
+	@PutMapping("/persona")
 	public void update(@RequestBody Persona persona) {
 		personaService.save(persona);
 	}
+	
+
 
 }
