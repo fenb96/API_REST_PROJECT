@@ -24,20 +24,15 @@ public class PersonaController {
 	
 	private final PersonaService personaService;
 	
-	@GetMapping
-	public String getError() {
-		return "Holis";
-	}
-	
 	@PostMapping("/persona")
 	public void save(@RequestBody Persona persona) {
 		personaService.save(persona);
 	}
 	
-//	@GetMapping
-//	public List<Persona> gottem(){
-//		return personaService.findAll();
-//	}
+	@GetMapping
+	public List<Persona> gottem(){
+		return personaService.findAll();
+	}
 	
 	@GetMapping("/persona")
 	public List<Persona> findAll(){
